@@ -1,7 +1,7 @@
-import Routes from "./routes";
+import Routes from './routes'
 
-function App(): JSX.Element {
-  return <Routes />;
+function App (): JSX.Element {
+  return <Routes />
 }
 
-export default App;
+export default App

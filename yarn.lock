@@ -2434,7 +2434,7 @@
   dependencies:
     "@typescript-eslint/utils" "5.57.0"
 
-"@typescript-eslint/parser@^5.43.0", "@typescript-eslint/parser@^5.5.0":
+"@typescript-eslint/parser@^5.43.0", "@typescript-eslint/parser@^5.5.0", "@typescript-eslint/parser@^5.57.0":
   version "5.57.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.57.0.tgz#f675bf2cd1a838949fd0de5683834417b757e4fa"
   integrity sha512-orrduvpWYkgLCyAdNtR1QIWovcNZlEm6yL8nwH/eTxWLd8gsP+25pdLHYzL2QdkqrieaDwLpytHqycncv0woUQ==
