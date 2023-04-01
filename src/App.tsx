@@ -4,9 +4,9 @@ import { Theme } from '../src/styles/Theme'
 
 function App (): JSX.Element {
   return (
-    <ThemeProvider theme={Theme}>
-        <Routes />
-    </ThemeProvider>
+        <ThemeProvider theme={Theme}>
+            <Routes />
+        </ThemeProvider>
   )
 }
 
