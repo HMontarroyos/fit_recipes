@@ -2,18 +2,19 @@
 
 export const Theme = {
   colors: {
-    primary: '#007AFF',
+    primary: '#3D4D14',
     secondary: '#FF9500',
-    background: '#FFFFFF',
-    text: '#000000'
+    background: '#332E2A',
+    text: '#EFEAE4'
     },
   fonts: {
-    main: 'Helvetica Neue, sans-serif'
+    title: 'Smooch Sans, sans-serif',
+    text: 'Roboto, sans-serif',
     },
   fontSizes: {
     small: '14px',
-    medium: '16px',
-    large: '18px',
+    medium: '24px',
+    large: '96px',
     },
   spacing: {
     small: '8px',
