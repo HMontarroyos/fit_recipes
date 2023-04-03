@@ -12,7 +12,7 @@ export const Buttom = styled.button<Props>`
     color: ${(props) => props.theme.colors.text};
     background-color: ${(props) => props.theme.colors.secondary};
     font-family: ${(props) => props.theme.fonts.heading};
-    font-size: ${(props) => props.theme.fonts.medium2};
+    font-size: 18px;
     border-radius: 10px;
     cursor: pointer;
 
