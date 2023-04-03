@@ -8,9 +8,15 @@ function Header (): JSX.Element {
                 <S.LinkRedirect to={'/'} data-item={'Inicio'}>
                     <li>Inicio</li>
                 </S.LinkRedirect>
-                <li>Sobre</li>
-                <li>Contato</li>
-                <li>Receitas</li>
+                <S.LinkRedirect to={'/about'} data-item={'Sobre'}>
+                    <li>Sobre</li>
+                </S.LinkRedirect>
+                <S.LinkRedirect to={'/contact'} data-item={'Contato'}>
+                    <li>Contato</li>
+                </S.LinkRedirect>
+                <S.LinkRedirect to={'/recipes'} data-item={'Receitas'}>
+                    <li>Receitas</li>
+                </S.LinkRedirect>
             </S.NavItems>
         </S.Menu>
   )
