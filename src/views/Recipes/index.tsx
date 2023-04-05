@@ -8,13 +8,14 @@ interface Recipe {
   description: string
   ingredients: string[]
   instructions: string
+  image: string
 }
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([])
 
   useEffect(() => {
-    async function fetchRecipes (): Promise<void> {
+    async function fetchRecipes (): Promise<any> {
       try {
         const recipes = await getRecipes()
         setRecipes(recipes)
@@ -33,6 +34,7 @@ const Home: React.FC = () => {
                 {recipes.map((recipe) => (
                     <li key={recipe._id}>
                         <h1>{recipe.name}</h1>
+                        <img src={recipe.image} alt={recipe.name} width={'400px'} height={'400px'}/>
                         <h2>Ingredientes</h2>
                         {recipe.ingredients.map((ingredient) => (
                             <p key={recipe._id}>{ingredient}</p>
