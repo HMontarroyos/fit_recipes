@@ -56,7 +56,7 @@ export const ContainerTopRight = styled.div`
 
 export const ContainerBottomLeft = styled.div`
     top: 0px;
-bottom: 0px;
+    bottom: 0px;
     left: 0px;
     position: fixed;
     z-index:-1;

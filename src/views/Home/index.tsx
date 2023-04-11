@@ -1,14 +1,11 @@
-/* eslint-disable */
-import React from "react";
-import { Fade, Slide } from "react-reveal";
-import * as S from "./styled";
-import { Buttom } from "../../components";
-import plate01 from "../../assets/images/plate_of_food_01.svg";
-import plate02 from "../../assets/images/plate_of_food_02.svg";
-import plate03 from "../../assets/images/plate_of_food_03.svg";
+import React from 'react'
+import { Fade } from 'react-reveal'
+import * as S from './styled'
+import { Buttom } from '../../components'
+import { plate01, plate02 } from '../../assets/images'
 
 const Home: React.FC = () => {
-    return (
+  return (
         <>
             <S.Container>
                 <div>
@@ -19,8 +16,8 @@ const Home: React.FC = () => {
                         motivado, saudável e confiante!
                     </S.Paragraph>
                 </div>
-                <S.LinkRedirect to={"/recipes"}>
-                    <Buttom width={"300px"} height={"50px"}>
+                <S.LinkRedirect to={'/recipes'}>
+                    <Buttom width={'300px'} height={'50px'}>
                         Transforme sua vida agora com um clique
                     </Buttom>
                 </S.LinkRedirect>
@@ -35,16 +32,8 @@ const Home: React.FC = () => {
                     <img src={plate02} />
                 </Fade>
             </S.ContainerBottomRight>
-            {/*             <S.ContainerBottomLeft>
-
-
-                <Fade left>
-                    <img src={plate03} />
-
-               </Fade>
-            </S.ContainerBottomLeft> */}
         </>
-    );
-};
+  )
+}
 
-export default Home;
+export default Home
