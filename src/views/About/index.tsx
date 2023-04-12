@@ -1,41 +1,12 @@
 /* eslint-disable @typescript-eslint/comma-dangle */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react'
 import { Fade, Zoom } from 'react-reveal'
 import * as S from './styled'
 import { plate04, plate05, plate06 } from '../../assets/images'
-import {
-  icon01,
-  icon02,
-  icon03,
-  icon04,
-  icon05,
-} from '../../assets/images/icons'
+import { LIST_BENEFITS } from '../../global/const'
 
 const About: React.FC = () => {
-  const [listItens, setlistItens] = useState([
-    {
-      icon: icon01,
-
-      title: 'Receitas fits de qualidade avaliadas por especialistas',
-    },
-    {
-      icon: icon02,
-      title: ' Comunidade colaborativa de entusiastas da culinária fit.',
-    },
-    {
-      icon: icon03,
-      title: ' Inspiração e criatividade na cozinha com novos sabores.',
-    },
-    {
-      icon: icon04,
-      title: 'Experiência personalizada com perfil e preferências culinárias.',
-    },
-    {
-      icon: icon05,
-      title: 'Plataforma exclusiva para membros cadastrados, com acesso a conteúdo restrito e sazonal.',
-    },
-  ])
+  const [listItens] = useState(LIST_BENEFITS)
 
   return (
         <>
@@ -98,26 +69,26 @@ const About: React.FC = () => {
                 </Fade>
             </S.Wrapper>
 
-                <S.ContainerImage>
-                    <Fade left>
-                        <img src={plate06} width={'700px'}/>
-                    </Fade>
-                    <S.List>
-                        {listItens.map((item, idx) => (
-                            <div key={idx}>
-                                <Zoom bottom>
-                                    <img src={item.icon} />
-                                </Zoom>
-                                <Zoom top>
-                                    <S.ContainerText>
+            <S.ContainerImage>
+                <Fade left>
+                    <img src={plate06} width={'700px'} />
+                </Fade>
+                <S.List>
+                    {listItens.map((item, idx) => (
+                        <div key={idx}>
+                            <Zoom bottom>
+                                <img src={item.icon} />
+                            </Zoom>
+                            <Zoom top>
+                                <S.ContainerText>
                                     <h2>{item.title}</h2>
-                                    </S.ContainerText>
-                                </Zoom>
-                            </div>
-                        ))}
-                    </S.List>
-                </S.ContainerImage>
-
+                                </S.ContainerText>
+                            </Zoom>
+                        </div>
+                    ))}
+                </S.List>
+                <S.BackgroundImage />
+            </S.ContainerImage>
         </>
   )
 }

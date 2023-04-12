@@ -55,8 +55,18 @@ margin-top: 300px;
 display: flex;
 align-items: center;
 justify-content: space-between;
-
-
+`
+export const BackgroundImage = styled.div`
+  position: fixed;
+  top: 100px;
+  bottom: 0px;
+  left: 0px;
+  background-image: url(${backgroundPolygon});
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 `
 
 export const List = styled.div`
@@ -81,16 +91,4 @@ export const List = styled.div`
         margin-left: 20px;
     }
 
-/*     &::after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        bottom: 200;
-        right: 100;
-        width: 1646px;
-        height: 1050px;
-        background-image: url(${backgroundPolygon});
-        background-size: cover;
-        background-position: center;
-      } */
 `
