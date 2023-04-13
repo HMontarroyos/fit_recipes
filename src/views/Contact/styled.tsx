@@ -1,14 +1,13 @@
 import styled from 'styled-components'
+import { Field } from 'formik'
 import { backgroundRectangle } from '../../assets/images'
 
 export const Container = styled.div`
 display:flex;
-flex-direction:column;
-justify-content: space-between;
 `
 
 export const Title = styled.h2`
-text-align: right;
+margin:10px;
 color: ${(props) => props.theme.colors.text};
 font-size: ${(props) => props.theme.fontSizes.medium2};
 font-family: ${(props) => props.theme.fonts.title};
@@ -32,7 +31,7 @@ height:431;
 `
 
 export const ContainerForm = styled.div`
-
+margin-left: 300px;
 `
 
 export const BackgroundImage = styled.div`
@@ -66,4 +65,19 @@ export const ContainerImage = styled.div`
         width: 100%;
         opacity: 0.3;
     }
+`
+export const Input = styled(Field)`
+    width: 483px;
+    height:30px;
+    border-radius:10px;
+    margin:10px;
+    padding:10px;
+`
+export const TextArea = styled(Field)`
+    width: 483px;
+    height:230px;
+    resize: none;
+    border-radius:10px;
+    margin:10px;
+    padding:10px;
 `
