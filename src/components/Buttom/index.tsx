@@ -1,18 +1,18 @@
 import React from 'react'
 import * as S from './styled'
 
-interface ButtomProps {
-  width: string
-  height: string
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  width?: string
+  height?: string
   children?: React.ReactNode
 }
 
-function Buttom ({ width, height, children }: ButtomProps): JSX.Element {
+function Button ({ width, height, children, ...props }: ButtonProps): JSX.Element {
   return (
-        <S.Buttom width={width} height={height}>
-            {children}
-        </S.Buttom>
+    <S.Button width={width} height={height} {...props}>
+      {children}
+    </S.Button>
   )
 }
 
-export default Buttom
+export default Button

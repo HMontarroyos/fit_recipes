@@ -2,11 +2,11 @@ import styled from 'styled-components'
 import { lighten } from 'polished'
 
 interface Props {
-  width: string
-  height: string
+  width?: string
+  height?: string
 }
 
-export const Buttom = styled.button<Props>`
+export const Button = styled.button<Props>`
     width: ${(props) => props.width};
     height: ${(props) => props.height};
     color: ${(props) => props.theme.colors.text};
