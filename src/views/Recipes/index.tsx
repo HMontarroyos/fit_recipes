@@ -1,6 +1,10 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
+import { Fade } from 'react-reveal'
 import * as S from './styled'
-import { getRecipes } from '../../server/api'
+import { CardRecipe } from '../../components'
+import { getRecipes } from '../../server/index'
+import { banner01, banner02, banner03, banner04 } from '../../assets/images'
 
 interface Recipe {
   _id: string
@@ -13,6 +17,7 @@ interface Recipe {
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([])
+  const [imagesHeader] = useState([banner01, banner02, banner03, banner04])
 
   useEffect(() => {
     async function fetchRecipes (): Promise<any> {
@@ -29,8 +34,25 @@ const Home: React.FC = () => {
 
   return (
         <>
-            <S.Title>RECEITAS</S.Title>
-            <ul>
+            <Fade>
+                {/* <S.Title>RECEITAS FIT</S.Title> */}
+                <S.ContainerHeader>
+                    {imagesHeader.map((image, index) => (
+                        <img key={index} src={image} alt={`Imagem ${index}`} />
+                    ))}
+                </S.ContainerHeader>
+            </Fade>
+            <S.Container>
+                {recipes.map((recipe) => (
+                    <CardRecipe key={recipe._id} image={recipe.image} name={recipe.name}/>
+                ))}
+            </S.Container>
+
+
+
+
+
+{/*             <ul>
                 {recipes.map((recipe) => (
                     <li key={recipe._id}>
                         <h1>{recipe.name}</h1>
@@ -44,7 +66,7 @@ const Home: React.FC = () => {
                         <p>{recipe.instructions}</p>
                     </li>
                 ))}
-            </ul>
+            </ul> */}
         </>
   )
 }
