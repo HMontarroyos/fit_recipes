@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/indent */
 import React, { useState } from 'react'
 import { Flip } from 'react-reveal'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as S from './styled'
+import { saveEmailData } from '../../server/index'
 import { plate07 } from '../../assets/images'
 import { Buttom } from '../../components'
+
 const Contact: React.FC = () => {
   const [initialValues] = useState({
     name: '',
@@ -13,8 +18,18 @@ const Contact: React.FC = () => {
     message: '',
   })
 
-  const handleSubmit = (values: any): void => {
+  const handleSubmit = async (values: any): Promise<void> => {
     console.log(values)
+// eslint-disable-next-line @typescript-eslint/indent
+  try {
+      toast.success('Formulario enviado com sucesso, breve retornaremos.', {
+        // eslint-disable-next-line @typescript-eslint/comma-dangle
+        position: toast.POSITION.TOP_CENTER,
+      })
+      return await saveEmailData(values)
+ } catch (error) {
+      console.error(error)
+    }
   }
 
   const validate = (values: any): Record<string, string> => {
