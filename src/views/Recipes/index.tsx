@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 import { Fade } from 'react-reveal'
 import * as S from './styled'
 import { CardRecipe } from '../../components'
@@ -44,7 +45,9 @@ const Home: React.FC = () => {
             </Fade>
             <S.Container>
                 {recipes.map((recipe) => (
-                    <CardRecipe key={recipe._id} image={recipe.image} name={recipe.name}/>
+                    <Link to={`/recipes/${recipe._id}`}>
+                        <CardRecipe key={recipe._id} image={recipe.image} name={recipe.name}/>
+                    </Link>
                 ))}
             </S.Container>
 

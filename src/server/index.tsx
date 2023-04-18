@@ -1,4 +1,4 @@
-import { getRecipes } from './Recipes/api'
+import { getRecipes, getRecipeId } from './Recipes/api'
 import { saveEmailData } from './Email/api'
 
-export { getRecipes, saveEmailData }
+export { getRecipes, getRecipeId, saveEmailData }
