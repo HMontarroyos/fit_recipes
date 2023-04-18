@@ -16,19 +16,20 @@ interface Recipe {
 
 const RecipeId: React.FC = () => {
   const [recipe, setRecipe] = useState<Recipe>()
+  const { id } = useParams<{ id: string }>();
+
   useEffect(() => {
-    const { id } = useParams<{ id: string }>();
     async function fetchRecipe (): Promise<any> {
-      try {
-        if(id){
-            const recipe = await getRecipeId(id)
-            setRecipe(recipe)
-        }else{
-            throw new Error(`id recipe invalid`)
+          try {
+            if(id){
+                const recipe = await getRecipeId(id)
+                setRecipe(recipe)
+            }else{
+                throw new Error(`id recipe invalid`)
+            }
+        } catch (error) {
+            console.error(error)
         }
-      } catch (error) {
-        console.error(error)
-      }
     }
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
     fetchRecipe()

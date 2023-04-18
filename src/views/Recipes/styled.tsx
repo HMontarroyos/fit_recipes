@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Title = styled.h1`
     color: ${(props) => props.theme.colors.text};
@@ -32,4 +33,7 @@ export const Container = styled.div`
 margin-top: 20px;
 display: flex;
 flex-wrap: wrap;
+`
+export const LinkRedirect = styled(Link)`
+    text-decoration: none;
 `
