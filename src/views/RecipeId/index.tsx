@@ -122,14 +122,6 @@ const RecipeId: React.FC = () => {
                             </div>
                         ))}
                     </S.ContainerIngredients>
-            {/*         <select value={value} onChange={onChange}>
-                        {options.map(option => (
-                            <option key={option.value} value={option.value}>
-                                {option.label}
-                            </option>
-                        ))}
-                    </select> */}
-
             </div>
             {recipe?.utensils && recipe.utensils?.length > 0 && (
                 <S.ContainerUtensils>
