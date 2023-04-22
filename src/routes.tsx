@@ -1,13 +1,13 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter, Routes as Router, Route } from 'react-router-dom'
 
-import { Header } from './components'
+import { Header, Loading } from './components'
 import { Home, Recipes, RecipeId, About, Contact } from './views'
 
 const Routes: React.FC = () => {
   return (
         <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading/>}>
                 <Header />
                 <Router>
                     <Route path="/" element={<Home />} />
