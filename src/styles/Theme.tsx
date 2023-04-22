@@ -6,6 +6,8 @@ export const Theme = {
         secondary: "#738F36",
         background: "#332E2A",
         text: "#EFEAE4",
+        background2: "#D9D9D9",
+        disabledText: "#d3d3d3"
     },
     fonts: {
         title: "Smooch Sans, sans-serif",
