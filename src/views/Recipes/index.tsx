@@ -17,13 +17,17 @@ interface Recipe {
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([])
+  const [initialRecipes, setInitialRecipes] = useState<Recipe[]>([])
   const [imagesHeader] = useState([banner01, banner02, banner03, banner04])
+  const [query, setQuery] = useState<string>()
+
 
   useEffect(() => {
     async function fetchRecipes (): Promise<any> {
       try {
         const recipes = await getRecipes()
         setRecipes(recipes)
+        setInitialRecipes(recipes)
       } catch (error) {
         console.error(error)
       }
@@ -32,43 +36,39 @@ const Home: React.FC = () => {
     fetchRecipes()
   }, [])
 
+  const handleSearchRecipes = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target
+    setQuery(value)
+
+    value.trim().length >= 3
+    ? setRecipes(initialRecipes.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase())))
+    : setRecipes(initialRecipes)
+  }
+
   return (
         <>
             <Fade>
-                {/* <S.Title>RECEITAS FIT</S.Title> */}
+                <S.Title big top={"350px"}>RECEITAS FIT</S.Title>
                 <S.ContainerHeader>
                     {imagesHeader.map((image, index) => (
                         <img key={index} src={image} alt={`Imagem ${index}`} />
                     ))}
                 </S.ContainerHeader>
             </Fade>
-            <S.Container>
-                {recipes.map((recipe) => (
-                    <S.LinkRedirect to={`/recipes/${recipe._id}`}>
-                        <CardRecipe key={recipe._id} image={recipe.image} name={recipe.name}/>
-                    </S.LinkRedirect>
-                ))}
-            </S.Container>
-
-
-
-
-
-{/*             <ul>
-                {recipes.map((recipe) => (
-                    <li key={recipe._id}>
-                        <h1>{recipe.name}</h1>
-                        <img src={recipe.image} alt={recipe.name} width={'400px'} height={'400px'}/>
-                        <h2>Ingredientes</h2>
-                        {recipe.ingredients.map((ingredient) => (
-                            <p key={recipe._id}>{ingredient}</p>
-                        ))}
-                        <i>{recipe.description}</i>
-                        <h3>Modo de preparo:</h3>
-                        <p>{recipe.instructions}</p>
-                    </li>
-                ))}
-            </ul> */}
+            <S.ContainerInput>
+                <S.InputSearch type="text" value={query} onChange={handleSearchRecipes}/>
+            </S.ContainerInput>
+            {recipes.length > 0 ? (
+                <S.Container>
+                    {recipes.map((recipe) => (
+                        <S.LinkRedirect to={`/recipes/${recipe._id}`}>
+                            <CardRecipe key={recipe._id} image={recipe.image} name={recipe.name}/>
+                        </S.LinkRedirect>
+                    ))}
+                </S.Container>
+            ): (
+                <S.Title top={"50px"}>Nenhuma Receita Encontrada</S.Title>
+            )}
         </>
   )
 }

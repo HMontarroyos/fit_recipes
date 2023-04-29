@@ -1,7 +1,9 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Rating } from 'react-simple-star-rating';
 import { useParams } from "react-router-dom";
-import { getRecipeId } from '../../server/index'
+import { getRecipeId, getRecipes } from '../../server/index'
 import { Tag } from "../../components"
 import { icon06, icon07, icon08} from "../../assets/images/icons"
 import * as S from './styled'
@@ -38,24 +40,26 @@ interface Recipe {
 const RecipeId: React.FC = () => {
   const [recipe, setRecipe] = useState<Recipe>()
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    async function fetchRecipe (): Promise<any> {
-          try {
-            if(id){
-                const recipe = await getRecipeId(id)
-                console.log("RECIPE", recipe)
-                setRecipe(recipe)
-            }else{
-                throw new Error(`id recipe invalid`)
+useEffect(() => {
+    async function fetchRecipe(): Promise<any> {
+        try {
+            const recipes = await getRecipes()
+            const hasId = recipes.some((recipe: any)=> recipe._id === id)
+            if (id && hasId) {
+            const recipe = await getRecipeId(id);
+            setRecipe(recipe);
+            } else {
+            navigate('404');
             }
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
     }
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    fetchRecipe()
-  }, [])
+    fetchRecipe();
+},[]);
+
 
   const handleIngredientChange = (e: React.ChangeEvent<HTMLInputElement>, ingredientId: number) => {
     if (recipe) {
@@ -87,9 +91,7 @@ const RecipeId: React.FC = () => {
         <S.ContainerImage>
             <img src={recipe?.image} alt={recipe?.name}/>
             <S.ContainerRecipeInformation>
-                <div>
-
-                </div>
+                    <Rating readonly ratingValue={recipe?.rating}/>
                 <div>
                     <S.TextAndIcon>
                         <img src={icon06}/>

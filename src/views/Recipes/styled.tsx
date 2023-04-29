@@ -1,13 +1,18 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const Title = styled.h1`
+interface TitleProps {
+  top: string
+  big?: boolean
+}
+
+export const Title = styled.h1<TitleProps>`
     color: ${(props) => props.theme.colors.text};
-    font-size: ${(props) => props.theme.fontSizes.big};
+    font-size: ${(props) => (props.big ?? false) ? props.theme.fontSizes.big : props.theme.fontSizes.medium};
     font-family: ${(props) => props.theme.fonts.title};
     font-weight: 400;
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: ${(props) => props.top};
     left: 0;
     right: 0;
     bottom: 0;
@@ -36,4 +41,18 @@ flex-wrap: wrap;
 `
 export const LinkRedirect = styled(Link)`
     text-decoration: none;
+`
+
+export const ContainerInput = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:${(props) => props.theme.fontSizes.medium2}
+`
+export const InputSearch = styled.input`
+    padding: 10px;
+    margin:20px;
+    width: 600px;
+    height: 40px;
+    border-radius:50px;
 `
