@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { BrowserRouter, Routes as Router, Route } from 'react-router-dom'
 
 import { Header, Loading } from './components'
-import { Home, Recipes, RecipeId, About, Contact } from './views'
+import { Home, Recipes, RecipeId, About, Contact, NotFound } from './views'
 
 const Routes: React.FC = () => {
   return (
@@ -15,6 +15,7 @@ const Routes: React.FC = () => {
                     <Route path="/recipes/:id" element={<RecipeId />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path= "*" element={<NotFound/>}/>
                 </Router>
             </Suspense>
         </BrowserRouter>
